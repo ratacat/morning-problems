@@ -1,18 +1,21 @@
-var binarySearch = function(arr,val) {
-      var loop = 0;
-      var wall;
-      key = parseInt(arr.length / 2);
-      while (loop < 5) {
-            console.log("=====\nloop:"+loop+"\nwall:"+wall+"\nmediankey:"+key + "\nmedianval:"+arr[key]);
-            if (arr[key] > val) {
-                  wall = Math.round((key + 0) / 2);
-            } else {
-                  wall = Math.round((key + arr.length - 1) /2);
-            }
-            console.log(arr.join());
-            loop++;
-      }
-}
+var binarySearch = function(arr, val) {
+    var loop = 0;
+    var wall;
+    
+    while (arr.length > 1) {
+          key = parseInt(arr.length / 2);
+        console.log("=====\nloop:" + loop + "\nwall:" + wall + "\nmediankey:" + key + "\nmedianval:" + arr[key]);
+        if (arr[key] > val) {
+            //splice: start, deletecount
+           arr=arr.splice(0,key);
+        } else {
+            //wall = Math.round((key + arr.length - 1) / 2);
+           arr=arr.splice(key, arr.length);
+        }
+        console.log(arr.join());
+        //loop++;
+    }
+};
 
 arr = [13, 21, 33, 37, 80, 99, 100, 109];
 
