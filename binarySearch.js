@@ -1,3 +1,4 @@
+//non recursive, can only return boolean
 var binarySearch = function(arr, val) {
     var loop = 0;
     var wall;
@@ -15,6 +16,36 @@ var binarySearch = function(arr, val) {
         console.log(arr.join());
         //loop++;
     }
+};
+
+
+//recursive, can return index
+var findBinary = function(arr,searchVal) {
+   return binaryRecurse(0,arr.length,arr,searchVal);
+};
+
+var binaryRecurse = function(start,end,arr,searchVal) {
+    console.log("starting new binaryRecurse.");
+    medianKey = Math.floor((start + end) / 2);
+
+    console.log("start:" +start);
+    console.log("end:" +end);
+    console.log("medianKey:" +medianKey);
+
+    //val is here
+    if (searchVal === arr[medianKey]) {
+        console.log("found it!");
+        return medianKey;
+    }
+
+    //take the latter half of arr
+    else if (searchVal > arr[medianKey]) {return binaryRecurse(medianKey,end,arr,searchVal);}
+
+    //take the first half of arr
+    else if (searchVal < arr[medianKey]) {return binaryRecurse(start,medianKey,arr,searchVal);}
+
+    else {console.log("error, inputs not expected");}
+    
 };
 
 arr = [13, 21, 33, 37, 80, 99, 100, 109];
